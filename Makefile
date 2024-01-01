@@ -1,42 +1,53 @@
-APPD = appendix
-APP = udp
 
-VPATH = . udp
 
-#INC = . include
+APATH	=	appendix
+PRJ	=	udp
+TARGET	=	$(APATH)/$(PRJ)
 
-OBJS = ethernet.o ip.o udp.o udp_efr.o
+VPATH 	=	src
+IPATH	=	net
 
-CFLAGS	= -Wall
+INCPATH	=	$(addprefix -I, $(IPATH))
 
-DFLG	+= -D__UNREAL__
-DFLG	+= -D_DOS
-DFLG	+= -D_DEBUG_
+CC	=	gcc 
 
-WFLG	= -Wall
-WFLG	+= -Wpedantic
-WFLG	+= -Wno-builtin-declaration-mismatch
+FFLAGS		= -fno-inline
+FFLAGS		+= -fgnu89-inline
 
-NOFLG	= -nostdinc
-NOFLG	+= -nostartfiles
-NOFLG	+= -nodefaultlibs
-#NOFLG	+= -nolibc
-NOFLG	+= -nostdlib
+WFLAGS		= -Wall
+WFLAGS		+= -Wpedantic
+WFLAGS		+= -Wextra
+WFLAGS		+= -Wno-unused-but-set-variable
+WFLAGS		+= -Wno-builtin-declaration-mismatch
+WFLAGS		+= -Wno-missing-field-initializers
 
-OBJECTS = $(addprefix $(APPD)/,$(OBJS))
+DFLG		= _$(PRJ)_CHECK_
+DFLG		+= _FILE_OFFSET_BITS=64
+DFLG		+= _$(ARCH)_BIT_
+DFLG		+= _DEBUG_
 
-GCC	= gcc
+DFLAGS		= $(addprefix -D,$(DFLG))
 
-.PHONY: all clean 
+CFLAGS		= -g3 -O0 -std=gnu99 $(FFLAGS) $(WFLAGS) $(DFLAGS)
 
-all: $(APPD)
-	$(GCC) $(DFLG) $(WFLG) -o $(APP) main.c
+SRCS		= main.c
 
-echo:
-	echo $(OBJECTS)
+OBJS		= $(APATH)/$(addsuffix .o,$(basename $(SRCS))) 
+
+TAGS		= $(TARGET).tag
+
+.PHONY:	all clean tags
+
+all: $(TARGET) #tags
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(INCPATH) $(LIBPATH) $^ -o $@ $(LIBS)
+
+$(APATH)/%.o: %.c
+	$(CC) $(CFLAGS) $(INCPATH) -c $< -o $@
+
+#tags: $(OBJS)
+#	ctags -R
 
 clean:
-	@$(RM) -fv $(APPD)/*
-
-$(APPD)/%.o: %.c Makefile
-	@echo ""
+	@rm -vf $(APATH)/*.o $(APATH)/$(PRJ)

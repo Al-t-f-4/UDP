@@ -1,10 +1,9 @@
-#include "net/udp_efr.c"
-#include <string.h>
 #include <stdio.h>
 
 int main()
 {
-	udp_request();
+	
+	printf ("Hello world!\n");
 
 	return 0;
 }

@@ -8,33 +8,17 @@
 #include <stdint.h>
 #include <stddef.h>
 
-/*
-	Macros definition
-*/
-
 #define UDP_HLEN	( sizeof( struct _udp_hdr_ ) )
-
-/*
- 	Type declaration
-*/
-/*
- 	Data declaration
-*/
-
 
 #pragma pack ( 1 )
 struct _udp_hdr_ {
-	unsigned char	src;
-	unsigned char	dst;
-	unsigned char 	len;
-	unsigned char 	crc;
-	unsigned short 	data[];
+	uint8_t		src;
+	uint8_t		dst;
+	uint8_t 	len;
+	uint8_t 	crc;
+	uint16_t 	data[];
 };
 #pragma pack ( )
-
-/*
- 	Function declaration
-*/
 
 #ifdef __cplusplus
 extern "C" {

@@ -17,11 +17,13 @@
 #define ntohs(val)	htons(val)
 #define ntohl(val)	htonl(val)
 
+#pragma pack ( 1 )
 struct ether_header {
 	uint8_t		ether_dhost[ETH_ALEN] : 6;	/* destination eth addr	*/
 	uint8_t		ether_shost[ETH_ALEN] : 6;	/* source ether addr	*/
 	uint8_t		ether_type : 2;			/* packet type ID field	*/
 };
+#pragma pack ( )
 
 #ifdef __cplusplus
 extern "C" {

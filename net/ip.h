@@ -4,22 +4,12 @@
 */
 #ifndef _IP_H
 #define _IP_H
-/*
- 	Macros definition
-*/
+
 #include <stdint.h>
-#include <stddef.h>
 #define IP_V4 			0x04
 #define IP_TRANS_UDP	 	0x11
 
 #define IP_HLEN ( sizeof ( struct _ip_hdr_ ) )
-/*
- 	Type declaration
-*/
-
-/*
- 	Data declaration
-*/
 
 #pragma pack ( 1 )
 struct _ip_hdr_ {

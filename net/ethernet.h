@@ -6,8 +6,9 @@
 #ifndef _ETHERNET_H
 #define _ETHERNET_H
 
-#define ETHERTYPE	0x0800
+#include <stddef.h>
 
+#define ETHERTYPE	0x0800
 #define ETH_ALEN	6
 #define ETH_HLEN ( sizeof ( struct ethernet_header ) )
 
@@ -17,9 +18,9 @@
 #define ntohl(val)	htonl(val)
 
 struct ether_header {
-	unsigned char	ether_dhost[ETH_ALEN];	/* destination eth addr	*/
-	unsigned char	ether_shost[ETH_ALEN];	/* source ether addr	*/
-	unsigned short	ether_type;		/* packet type ID field	*/
+	uint8_t		ether_dhost[ETH_ALEN] : 6;	/* destination eth addr	*/
+	uint8_t		ether_shost[ETH_ALEN] : 6;	/* source ether addr	*/
+	uint8_t		ether_type : 2;			/* packet type ID field	*/
 };
 
 #ifdef __cplusplus

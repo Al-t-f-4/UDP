@@ -6,6 +6,8 @@
 #define _IP_H
 
 #include <stdint.h>
+#include <stddef.h>
+
 #define IP_V4 			0x04
 #define IP_TRANS_UDP	 	0x11
 

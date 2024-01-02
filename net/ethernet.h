@@ -6,21 +6,6 @@
 #ifndef _ETHERNET_H
 #define _ETHERNET_H
 
-
-/*
- *	Macros definition
- */
-enum _etypes_ {
-	PING = 0,
-	TFTP,
-	SIGDATA,
-	SIGCOMM,
-	TEXT,
-	IMX,
-	TIME,
-	LAST
-};
-
 #define ETHERTYPE	0x0800
 
 #define ETH_ALEN	6
@@ -31,30 +16,15 @@ enum _etypes_ {
 #define ntohs(val)	htons(val)
 #define ntohl(val)	htonl(val)
 
-/*
- *	Type declaration
- */
-
 struct ether_header {
 	unsigned char	ether_dhost[ETH_ALEN];	/* destination eth addr	*/
 	unsigned char	ether_shost[ETH_ALEN];	/* source ether addr	*/
 	unsigned short	ether_type;		/* packet type ID field	*/
 };
 
-/*
- *	Data declaration
- */
-
-
-
-/*
- *	Function declaration
- */
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 #ifdef __cplusplus
 }

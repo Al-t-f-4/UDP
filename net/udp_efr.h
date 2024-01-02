@@ -1,6 +1,6 @@
 /**
  * \file
- * \author	Bedarev Igor
+ * \author	Igor Bedarev
  */
 
 #ifndef _UDP_EFR_H
@@ -17,8 +17,8 @@
  */
 
 #define MTU			1516
-#define EFR_DATA_UDP_MAX	( MTU - ( sizeof ( struct ether_header ) + sizeof ( struct _ip_hdr_ ) + sizeof ( struct _upd_hdr_ ) ) )
-#define EFR_DATA_UDP_LEN(n)	( sizeof ( struct ether_header ) + sizeof ( struct _ip_hdr_ ) + sizeof ( struct _udp_hdr ) + ( sizeof ( char ) * n ) )
+#define EFR_DATA_UDP_MAX	( MTU - ETH_HLEN + IP_HLEN + UDP_HLEN )
+#define EFR_DATA_UDP_LEN(n)	( ETH_HLEN + IP_HLEN + UDP_HEN * n ) 
 
 /*
  *	Type declaration
@@ -45,6 +45,8 @@ struct _efr_udp_ {
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+void udp_request ( uint8_t * );
 
 
 #ifdef __cplusplus

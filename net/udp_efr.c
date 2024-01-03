@@ -16,7 +16,6 @@
 void udp_request ( int8_t *buff )
 {
 	struct _efr_udp_ *efr;
-
 	
-	printf ( "HELLO\n");
+	
 }

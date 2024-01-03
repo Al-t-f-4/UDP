@@ -10,6 +10,9 @@
 
 #define IP_V4 			0x04
 #define IP_TRANS_UDP	 	0x11
+#define SRC_ADR			0x3542
+#define DEST_ADR		0x3254
+
 
 #define IP_HLEN ( sizeof ( struct _ip_hdr_ ) )
 
@@ -35,6 +38,8 @@ struct _ip_hdr_ {
 /*
  	Function declaration
 */
+
+void ip_fill_header ( struct _ip_hdr_ *, uint16_t );
 
 #ifdef __cplusplus
 extern "C" {

@@ -34,7 +34,7 @@ CFLAGS		= -g3 -O0 -std=gnu99 $(FFLAGS) $(WFLAGS) $(DFLAGS)
 SRC		= main.c 
 SRC		+= udp_efr.c 
 SRC		+= udp.c 
-SRC		+= ip.c
+SRC		+= ip.c ethernet.c
 
 OBJS		= $(addprefix $(APATH)/, $(addsuffix .o,$(basename $(SRC))))
 
@@ -51,8 +51,8 @@ $(TARGET): $(OBJS)
 $(APATH)/%.o: %.c
 	$(CC) $(CFLAGS) $(INCPATH) -c $< -o $@
 
-#tags: $(OBJS)
-#	ctags -R
+tags:
+	@ctags `find . -name "*.[ch]" -print` 
 
 clean:
 	@rm -vf $(APATH)/*.o $(APATH)/$(PRJ)

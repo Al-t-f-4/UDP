@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define ETHERTYPE	0x0800
+#define ETHER_TYPE	0x0800
 #define ETH_ALEN	6
 #define ETH_HLEN ( sizeof ( struct ether_header ) )
 
@@ -22,9 +22,11 @@
 struct ether_header {
 	uint8_t		dest[ETH_ALEN];	/* destination eth addr	*/
 	uint8_t		src[ETH_ALEN];	/* source ether addr	*/
-	uint8_t		type;		/* packet type ID field	*/
+	uint16_t	type;		/* packet type ID field	*/
 };
 #pragma pack ( )
+
+void ether_fill_header ( struct ether_header * );
 
 #ifdef __cplusplus
 extern "C" {

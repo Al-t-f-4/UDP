@@ -12,13 +12,14 @@
 
 #pragma pack ( 1 )
 struct _udp_hdr_ {
-	uint8_t		src;
-	uint8_t		dst;
-	uint8_t 	len;
-	uint8_t 	crc;
-	uint16_t 	data[];
+	uint32_t		src;
+	uint32_t		dst;
+	uint16_t 		len;
+	uint16_t 		crc;
 };
 #pragma pack ( )
+
+void udp_fill_header ( struct _udp_hdr_ *, uint16_t );
 
 #ifdef __cplusplus
 extern "C" {

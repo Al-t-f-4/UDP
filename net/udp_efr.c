@@ -13,8 +13,6 @@
 #include <malloc.h>
 #include <stdint.h>
 
-
-
 void udp_request ( int8_t *buff )
 {
 	struct _efr_udp_ 	*efr = NULL;
@@ -23,6 +21,6 @@ void udp_request ( int8_t *buff )
 	memcpy ( efr->pu, buff, sb );
 	ether_fill_header ( efr->eh );
 	ip_fill_header ( efr->ih, IP_HLEN + UDP_HLEN + sb );
-	//udp_fill_header ( &efr->uh, UDP_HLEN + sb );
+	udp_fill_header ( efr->uh, UDP_HLEN + sb );
 
 }

@@ -17,7 +17,6 @@ void ip_fill_header ( struct _ip_hdr_ *ih, uint16_t len )
 	ih -> csum = 0;
 	ih -> saddr = ( uint32_t ) htonl ( SRC_ADR );
 	ih -> daddr = ( uint32_t ) htonl ( DEST_ADR );
-	ih -> len = ( uint16_t ) htons ( sizeof ( struct _ip_hdr_ ) + len );
+	ih -> len = ( uint16_t ) htonl ( IP_HLEN + len );
 
-	//ih->csum = __checksum_ip ( );
 }

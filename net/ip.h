@@ -10,8 +10,8 @@
 
 #define IP_V4 			0x04
 #define IP_TRANS_UDP	 	0x11
-#define SRC_ADR			0x3542
-#define DEST_ADR		0x3254
+#define SRC_ADR			3232253185
+#define DEST_ADR		3232253253
 
 
 #define IP_HLEN ( sizeof ( struct _ip_hdr_ ) )

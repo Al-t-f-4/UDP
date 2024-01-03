@@ -13,8 +13,8 @@
 #define ETH_ALEN	6
 #define ETH_HLEN ( sizeof ( struct ether_header ) )
 
-#define htons(val)	( ( (val << 8) & 0xFF00 ) | ( ( val >> 8 ) & 0xFF ) )
-#define htonl(val)	( ( (val << 8) & 0xFF0000 ) | ( ( val >> 8 ) & 0xFF00 ) | ((val << 24) & 0xFF000000) | ((val >> 24) & 0xFF) )
+#define htons(val)	( ( (val << 16) & 0xFF00 ) | ( ( val >> 16 ) & 0xFF ) )
+#define htonl(val)	( ( (val << 32) & 0xFF0000 ) | ( ( val >> 32 ) & 0xFF00 ) | ((val << 24) & 0xFF000000) | ((val >> 24) & 0xFF) )
 #define ntohs(val)	htons(val)
 #define ntohl(val)	htonl(val)
 

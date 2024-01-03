@@ -18,7 +18,7 @@
 
 #define MTU			1516
 #define EFR_DATA_UDP_MAX	( MTU - ETH_HLEN + IP_HLEN + UDP_HLEN )
-#define EFR_DATA_UDP_LEN(n)	( ETH_HLEN + IP_HLEN + UDP_HEN * n ) 
+#define EFR_DATA_UDP_LEN(n)	( ETH_HLEN + IP_HLEN + UDP_HLEN + n ) 
 
 /*
  *	Type declaration
@@ -30,7 +30,7 @@ struct _efr_udp_ {
 	struct ether_header		*eh;
 	struct _ip_hdr_			*ih;
 	struct _udp_hdr_		*uh;
-	char payload_udp		pu[EFR_DATA_UDP_MAX];
+	int8_t				pu[EFR_DATA_UDP_MAX];
 };
 #pragma pack()
 /*
@@ -42,12 +42,11 @@ struct _efr_udp_ {
  *	Function declaration
  */
 
+void udp_request ( int8_t * );
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-void udp_request ( uint8_t * );
-
 
 #ifdef __cplusplus
 }

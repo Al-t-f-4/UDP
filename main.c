@@ -5,7 +5,7 @@ int main()
 {
 	
 	printf ("Hello world!\n");
-	udp_request ( "Hello! We come in peace." );
+	udp_request ( ( int8_t * )"Hello! We come in peace." );
 
 
 	return 0;

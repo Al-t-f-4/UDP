@@ -4,10 +4,11 @@ APATH	=	appendix
 PRJ	=	udp
 TARGET	=	$(APATH)/$(PRJ)
 
-VPATH 	=	src
+VPATH 	=	net
 IPATH	=	net
 
 INCPATH	=	$(addprefix -I, $(IPATH))
+LIBPATH =	$(addprefix -I, $(VPATH))
 
 CC	=	gcc 
 
@@ -30,13 +31,14 @@ DFLAGS		= $(addprefix -D,$(DFLG))
 
 CFLAGS		= -g3 -O0 -std=gnu99 $(FFLAGS) $(WFLAGS) $(DFLAGS)
 
-SRCS		= main.c
+SRC		= main.c
+SRC		+= udp_efr.c udp.c ip.c
 
-OBJS		= $(APATH)/$(addsuffix .o,$(basename $(SRCS))) 
+OBJS		= $(APATH)/$(addsuffix .o,$(basename $(SRC))) 
 
 TAGS		= $(TARGET).tag
 
-.PHONY:	all clean tags
+.PHONY:	all clean tags info
 
 all: $(TARGET) #tags
 
@@ -51,3 +53,7 @@ $(APATH)/%.o: %.c
 
 clean:
 	@rm -vf $(APATH)/*.o $(APATH)/$(PRJ)
+
+info:
+	@echo $(INCPATH)
+	@echo $(LIBPATH)

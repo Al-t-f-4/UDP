@@ -3,7 +3,8 @@
 #include "ethernet.h"
 
 void ip_fill_header ( struct _ip_hdr_ *ih, uint16_t len )
-{	
+{
+
 	ih -> ihl = 0x05;
 	ih -> version = IP_V4;
 	ih -> tos = 0;

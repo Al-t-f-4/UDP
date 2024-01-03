@@ -25,5 +25,4 @@ void udp_request ( int8_t *buff )
 	ip_fill_header ( efr->ih, IP_HLEN + UDP_HLEN + sb );
 	//udp_fill_header ( &efr->uh, UDP_HLEN + sb );
 
-
 }

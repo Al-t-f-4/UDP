@@ -11,9 +11,12 @@
 #include <stdio.h>
 
 
+
+
 void udp_request ( int8_t *buff )
 {
-	struct ether_header *eh = ( struct ether_header * ) buff;
+	struct _efr_udp_ *efr;
+
 	
 	printf ( "HELLO\n");
 }

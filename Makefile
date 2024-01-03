@@ -31,10 +31,12 @@ DFLAGS		= $(addprefix -D,$(DFLG))
 
 CFLAGS		= -g3 -O0 -std=gnu99 $(FFLAGS) $(WFLAGS) $(DFLAGS)
 
-SRC		= main.c
-SRC		+= udp_efr.c udp.c ip.c
+SRC		= main.c 
+SRC		+= udp_efr.c 
+SRC		+= udp.c 
+SRC		+= ip.c
 
-OBJS		= $(APATH)/$(addsuffix .o,$(basename $(SRC))) 
+OBJS		= $(addprefix $(APATH)/, $(addsuffix .o,$(basename $(SRC))))
 
 TAGS		= $(TARGET).tag
 
@@ -44,6 +46,7 @@ all: $(TARGET) #tags
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(INCPATH) $(LIBPATH) $^ -o $@ $(LIBS)
+	@echo $(OBJS)
 
 $(APATH)/%.o: %.c
 	$(CC) $(CFLAGS) $(INCPATH) -c $< -o $@
